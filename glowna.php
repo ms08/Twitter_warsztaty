@@ -41,11 +41,11 @@ Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor 
 $host = "localhost";
 $user = "root";
 $pass = "root";
-$db = "products_ex";
+$db = "Tweet";
 
 $conn = new PDO("mysql:host=$host; charset=UTF8; dbname=$db", $user, $pass);
 
-$query = 'SELECT name, description, price FROM products';
+$query = 'SELECT tweet, userID  FROM Tweets';
 
 $result = $conn->query($query);
 
@@ -60,20 +60,10 @@ foreach ($result->fetchAll() as $row)
 
 ?>
 <tr>
-  <td> <?php echo $row['name']?></td>
+  <td> <?php echo $row['tweet'].'&nbsp'?></td>
   <td>
-    <?php
+    <?php echo $row['userID']   ?></td>
 
-    //zmieniłem na 5 bo tak.
-  if(strlen($row['description']) >5 )
-  {
-    echo substr($row['description'],0, 5) .'.....';
-  }
-  else {
-    echo $row['description'];
-  }
-  ?></td>
-  <td> <?php echo $row['price']?></td>
 </tr>
 <?php
 }

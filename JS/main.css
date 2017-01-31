@@ -1,3 +1,21 @@
+.logowanie{
+  background-image: url("../js/img/1.jpg");
+  background-size: cover;
+  background-repeat:no-repeat;
+  height: 100%;
+  width: 100%;
+
+}
+.register{
+  background-image: url("../js/img/5.jpg");
+  background-size: cover;
+  background-repeat:no-repeat;
+  height: 100%;
+  width: 100%;
+
+}
+
+
 .main{
 
   width: 90%;
@@ -9,7 +27,7 @@
 
 .body{
   width:  80%;
-  margin: 0 auto;
+  margin: auto 0;
 
 }
 
@@ -24,7 +42,10 @@
 
 
 .guzik{
-text-align: center;
+  display: flex;
+   justify-content: center;
+   align-items: center;
+   height: 100%;
 }
 
 textarea {
