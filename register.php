@@ -1,13 +1,13 @@
 <?php
-$mail=$_POST['email'];
-$query="SELECT * from users where email ='$mail'";
-
-if($numOfRows==1)
-{
-// print"An account with that email is already created..<a href ='createAccount.php'>Please enter a new account email.</a>";
-// print"<a href ='createAccount.php'></a>";
-
-}
+// $mail=$_POST['email'];
+// $query="SELECT * from users where email ='$mail'";
+//
+// if($numOfRows==1)
+// {
+// // print"An account with that email is already created..<a href ='createAccount.php'>Please enter a new account email.</a>";
+// // print"<a href ='createAccount.php'></a>";
+//
+// }
 
 
 $sql ='INSERT INTO Users (email, password,salt) VALUES (?,?,?)';
@@ -33,10 +33,14 @@ if(!empty($_POST['email']))
       );
       if ($result=== false)
       {
-        var_dump($conn->errorInfo());
+        echo "Taki email już istnieje w naszej bazie.";
+        header( "refresh:3;url=register.html" );
       }
+      else
+      {
       echo "Zarejestrowano";
       header( "refresh:3;url=glowna.php" );
+      }
     }
     else
     {

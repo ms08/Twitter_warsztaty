@@ -4,6 +4,8 @@
  Jeżeli taki email jest, to przekierować znowu do
 strony tworzenia użytkownika i wyświetlić komunikat o zajętym adresie email.
 
+OK
+
 
 
 

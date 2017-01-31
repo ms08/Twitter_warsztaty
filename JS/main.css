@@ -1,7 +1,79 @@
-body{
-  background-color: ;
+.main{
+
+  width: 90%;
+  margin: auto;
+  background-color: rgba(0, 0, 107, 0.4);
+
 }
 
+
+.body{
+  width:  80%;
+  margin: 0 auto;
+
+}
+
+
+.center{
+  margin: auto;
+  width: 55%;
+  -webkit-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+  -moz-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+  box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+}
+
+
 .guzik{
-  margin: 0, auto;
+text-align: center;
+}
+
+textarea {
+  width: 500px;
+  height: 100px;
+  background: none repeat scroll 0 0 rgba(0, 0, 0, 0.07);
+  border-color: -moz-use-text-color #FFFFFF #FFFFFF -moz-use-text-color;
+  border-image: none;
+  border-radius: 6px 6px 6px 6px;
+  border-style: none solid solid none;
+  border-width: medium 1px 1px medium;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12) inset;
+  color: #555555;
+  font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+  font-size: 1em;
+  line-height: 1.4em;
+  padding: 5px 8px;
+  transition: background-color 0.2s ease 0s;
+}
+
+
+textarea:focus {
+    background: none repeat scroll 0 0 #FFFFFF;
+    outline-width: 0;
+}
+
+.textarea{
+  text-align: center;
+
+}
+
+
+.textarea {
+  transition:All 0.2765s ease-in-out;
+  -webkit-transition:All 0.2765s ease-in-out;
+  -moz-transition:All 0.2765s ease-in-out;
+  -o-transition:All 0.2765s ease-in-out;
+  transform: rotate(0deg) scale(0.541) skew(1deg) translate(0px);
+  -webkit-transform: rotate(0deg) scale(0.541) skew(1deg) translate(0px);
+  -moz-transform: rotate(0deg) scale(0.541) skew(1deg) translate(0px);
+  -o-transform: rotate(0deg) scale(0.541) skew(1deg) translate(0px);
+  -ms-transform: rotate(0deg) scale(0.541) skew(1deg) translate(0px);
+  }
+
+.textarea:hover{
+  transform: rotate(0deg) scale(1) skew(1deg) translate(0px);
+-webkit-transform: rotate(0deg) scale(1) skew(1deg) translate(0px);
+-moz-transform: rotate(0deg) scale(1) skew(1deg) translate(0px);
+-o-transform: rotate(0deg) scale(1) skew(1deg) translate(0px);
+-ms-transform: rotate(0deg) scale(1) skew(1deg) translate(0px);
+
 }
