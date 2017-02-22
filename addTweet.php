@@ -1,8 +1,8 @@
 <?php
 
-$sql ='INSERT INTO Tweets (tweet, date) VALUES (? , now() )';
+$sql ="INSERT INTO Tweets (tweet, date, userID) VALUES (? , now(), '{$_SESSION['id']}' )";
 
-if(!empty($_POST))
+if(!empty($_POST['tweet']))
 {
   $host = "localhost";
   $user = "root";
@@ -14,8 +14,8 @@ if(!empty($_POST))
   $stm = $conn->prepare($sql);
 
   $result= $stm->execute(
-    array($_POST['tweet'])
-  );
+      array($_POST['tweet'])
+    );
   if ($result=== false)
   {
     var_dump($conn->errorInfo());
@@ -25,6 +25,11 @@ if(!empty($_POST))
     echo "ok";
   }
 
+}
+else
+{
+  echo "Napisz coś!";
+  header( "refresh:2;url=glowna.php" );
 }
 
 

@@ -1,3 +1,15 @@
+<?php
+
+session_start();
+
+if(isset($_SESSION['zalogowany'])&&($_SESSION['zalogowany']==true))
+{
+  header('Location:glowna.php');
+  exit();
+}
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -13,7 +25,7 @@
 <body class="logowanie">
 
 
-<form action="logowanie.php" method="POST">
+<form action="login.php" method="POST">
 
   <div class="input-group">
     <span class="input-group-addon" id="basic-addon1"></span>

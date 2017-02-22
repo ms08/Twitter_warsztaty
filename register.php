@@ -9,19 +9,22 @@
 //
 // }
 
+require_once 'src/config.php';
 
-$sql ='INSERT INTO Users (email, password,salt) VALUES (?,?,?)';
+session_start();
+
+$sql ='INSERT INTO Users (email, username, hashed_password) VALUES (?,?,?)';
 if(!empty($_POST['email']))
 {
 
     if (!empty($_POST['password']))
     {
-      $host = "localhost";
-      $user = "root";
-      $pass = "root";
-      $db   = "Tweet";
-
-      $conn = new PDO("mysql:host=$host; charset=UTF8; dbname=$db", $user, $pass);
+      // $host = "localhost";
+      // $user = "root";
+      // $pass = "root";
+      // $db   = "Tweet";
+      //
+      // $conn = new PDO("mysql:host=$host; charset=UTF8; dbname=$db", $user, $pass);
 
       $salt = uniqid(mt_rand(), true);
       $pass = hash("sha256",$_POST['password'].$salt);
@@ -38,18 +41,24 @@ if(!empty($_POST['email']))
       }
       else
       {
+        #zalogowano
+      // $_SESSION['zalogowano'] = true;
+      // $_SESSION['id'] = $row['id'];
+      // $_SESSION['email'] = $_POST['email'];
       echo "Zarejestrowano";
       header( "refresh:3;url=glowna.php" );
       }
     }
     else
     {
-    echo "Podaj hasło!";
+      echo('<div style="color:red" >Podaj hasło!</div>');
+      header( "refresh:2;url=register.html" );
     }
 }
 else
 {
   echo "Podaj email!";
+  header( "refresh:2;url=register.html" );
 }
 
 ?>

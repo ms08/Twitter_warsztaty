@@ -27,7 +27,7 @@ Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor 
 
 <div class="textarea">
 <form action="addTweet.php" method="post">
-<textarea placeholder="Napisz coś..." rows="20" name="comment[text]"></textarea>
+<textarea placeholder="Napisz coś..." rows="20" name="tweet"></textarea>
 
 </div>
 <div class="guzik">
@@ -36,7 +36,7 @@ Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor 
 </form>
 
 <div class="center">
-  <?php
+<?php
 
 $host = "localhost";
 $user = "root";
@@ -46,42 +46,29 @@ $db = "Tweet";
 $conn = new PDO("mysql:host=$host; charset=UTF8; dbname=$db", $user, $pass);
 
 $query = 'SELECT tweet, userID  FROM Tweets';
-
 $result = $conn->query($query);
-
-//poniżej wyświetl listę danych z bazy, pamiętaj aby użyć pętli a nie print_r lub var_dump
 ?>
 </body>
-<table>
+<table style="margin: 25px auto">
 
 <?php
 foreach ($result->fetchAll() as $row)
 {
-
 ?>
 <tr>
-  <td> <?php echo $row['tweet'].'&nbsp'?></td>
   <td>
-    <?php echo $row['userID']   ?></td>
-
+   <?php echo $row['tweet'].'&nbsp'?></td>
+  <td>  <?php echo $row['userID']   ?></td>
 </tr>
+</div>
 <?php
 }
+
  ?>
-
-
 </div>
-
-
-
-
-
 <script src="JS/jquery-3.1.1.min.js" type="text/javascript">  </script>
 <script src="JS/jquery.js" type="text/javascript">  </script>
 <script src="JS/bootstrap.min.js" type="text/javascript">  </script>
 <script src="JS/app.js" type="text/javascript">  </script>
-
-
-
 </body>
 </html>

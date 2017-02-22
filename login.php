@@ -1,4 +1,7 @@
 <?php
+
+require_once 'src/config.php';
+
 session_start();
 
 
@@ -18,12 +21,12 @@ session_start();
 
     if (!empty($_POST['password']))
     {
-      $host = "localhost";
-      $user = "root";
-      $pass = "root";
-      $db   = "Tweet";
-
-      $conn = new PDO("mysql:host=$host; charset=UTF8; dbname=$db", $user, $pass);
+      // $host = "localhost";
+      // $user = "root";
+      // $pass = "root";
+      // $db   = "Tweet";
+      //
+      // $conn = new PDO("mysql:host=$host; charset=UTF8; dbname=$db", $user, $pass);
 
 
       $sql = "SELECT id,password,salt FROM Users WHERE email=?";
@@ -36,10 +39,12 @@ session_start();
       if ($ps==$row['password'])
       {
         #zalogowano
+        echo "Trwa przekierowanie na strone główna";
+        header( "refresh:3;url=glowna.php" );
         $_SESSION['zalogowano'] = true;
         $_SESSION['id'] = $row['id'];
         $_SESSION['email'] = $_POST['email'];
-        header('Location: glowna.php');
+
       }
       else
       {
@@ -56,10 +61,6 @@ session_start();
   {
     echo "Podaj email!";
   }
-
-
-
-
 ?>
 <!-- // $_SESSION['zalogowano'] == true {
 //$_SESSION['email']
