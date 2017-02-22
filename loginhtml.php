@@ -29,7 +29,7 @@ if(isset($_SESSION['zalogowany'])&&($_SESSION['zalogowany']==true))
 
   <div class="input-group">
     <span class="input-group-addon" id="basic-addon1"></span>
-    <input type="text" class="form-control" placeholder="Login" aria-describedby="basic-addon1" name="email">
+    <input type="text" class="form-control" placeholder="Username" aria-describedby="basic-addon1" name="email">
   </div>
 
   <div class="input-group">
@@ -42,7 +42,7 @@ if(isset($_SESSION['zalogowany'])&&($_SESSION['zalogowany']==true))
 
 </form>
 
-<form action="register.html" method="get">
+<form action="registerhtml.php" method="get">
 
 <button class="btn btn-default" type="submit" >Rejestruj</button>
 

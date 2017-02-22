@@ -1,29 +1,22 @@
 <?php
 
-$sql ="INSERT INTO Tweets (tweet, date, userID) VALUES (? , now(), '{$_SESSION['id']}' )";
+
+require_once 'src/config.php';
+require_once 'src/Tweet.php';
 
 if(!empty($_POST['tweet']))
 {
-  $host = "localhost";
-  $user = "root";
-  $pass = "root";
-  $db   = "Tweet";
 
-  $conn = new PDO("mysql:host=$host; charset=UTF8; dbname=$db", $user, $pass);
+  $oTweet = new Tweet();
+  $oTweet->setuserId(2);
+  $oTweet->setCreationDate();
+  $oTweet->setText($_POST['tweet']);
+  $oTweet->saveToDB($connection);
 
-  $stm = $conn->prepare($sql);
 
-  $result= $stm->execute(
-      array($_POST['tweet'])
-    );
-  if ($result=== false)
-  {
-    var_dump($conn->errorInfo());
-  }
-  else
-  {
-    echo "ok";
-  }
+    echo "Poszło do bazy";
+    header( "refresh:2;url=glowna.php" );
+
 
 }
 else

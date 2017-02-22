@@ -143,6 +143,7 @@ Class Tweet
   // $oTweet->setText('Miroslawy polskiego bizn...');
   // $oTweet->saveToDB($connection);
 
-$usertest = Tweet::loadAllTweetsByUserId($connection,2);
-
-var_dump($usertest);
+// $usertest = Tweet::loadAllTweetsByUserId($connection,2);
+// $usertest = Tweet::loadAllTweets($connection);
+//
+// var_dump($usertest);

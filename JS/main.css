@@ -35,15 +35,14 @@ width: 65%;
 -webkit-box-shadow: 0px 0px 67px 0px rgba(41,38,41,1);
 -moz-box-shadow: 0px 0px 67px 0px rgba(41,38,41,1);
 box-shadow: 0px 0px 67px 0px rgba(41,38,41,1);
-
 }
-
 
 .guzik{
 display: flex;
 justify-content: center;
 align-items: center;
 height: 100%;
+padding: 10px;
 }
 
 textarea {

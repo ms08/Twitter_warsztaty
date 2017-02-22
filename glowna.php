@@ -1,4 +1,9 @@
-<?php ?>
+<?php
+
+require_once 'src/config.php';
+require_once 'src/Tweet.php';
+
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -36,35 +41,17 @@ Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor 
 </form>
 
 <div class="center">
+
+
+
 <?php
 
-$host = "localhost";
-$user = "root";
-$pass = "root";
-$db = "Tweet";
+$usertest = Tweet::loadAllTweets($connection);
+var_dump($usertest);
 
-$conn = new PDO("mysql:host=$host; charset=UTF8; dbname=$db", $user, $pass);
 
-$query = 'SELECT tweet, userID  FROM Tweets';
-$result = $conn->query($query);
 ?>
-</body>
-<table style="margin: 25px auto">
 
-<?php
-foreach ($result->fetchAll() as $row)
-{
-?>
-<tr>
-  <td>
-   <?php echo $row['tweet'].'&nbsp'?></td>
-  <td>  <?php echo $row['userID']   ?></td>
-</tr>
-</div>
-<?php
-}
-
- ?>
 </div>
 <script src="JS/jquery-3.1.1.min.js" type="text/javascript">  </script>
 <script src="JS/jquery.js" type="text/javascript">  </script>
