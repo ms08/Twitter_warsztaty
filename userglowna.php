@@ -5,13 +5,17 @@ require_once 'src/Tweet.php';
 require_once 'src/User.php';
 
 $tweetTest = Tweet::loadAllTweetsByUserId($connection, 2);
-echo "<table class='allTweet' border='1px'>";
+
+echo "<table>";
+
+// tu dodać bordera
+
+
 foreach ($tweetTest as $value)
 {
   $sql = "SELECT * FROM Tweet WHERE user_id=?";
 
   $result = $connection->query($sql);
-
 
   echo "<tr>";
   echo "<td>".$value->getId()."</td>";

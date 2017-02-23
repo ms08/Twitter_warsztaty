@@ -1,6 +1,12 @@
+
+th{
+  text-align: center !important;
+}
+
 .allTweet{
 border: 1px;
-color: blue;
+color: grey;
+text-align: center;
 
 }
 
@@ -28,7 +34,7 @@ background-color: rgba(0, 0, 107, 0.4);
 
 .body{
 width:  80%;
-margin: auto;
+margin: 5% auto;
 }
 
 .komunikaty{

@@ -48,8 +48,6 @@ if(isset($_SESSION['zalogowany'])&&($_SESSION['zalogowany']==true))
 
 </div>
 </div>
-<!-- <img height="33%" name="slide" src="JS/img/1.jpg" width="100%"/> -->
-
 
 <script src="JS/jquery-3.1.1.min.js" type="text/javascript">  </script>
 <script src="JS/jquery.js" type="text/javascript">  </script>
