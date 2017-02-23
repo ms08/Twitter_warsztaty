@@ -1,12 +1,20 @@
 
 th{
-  text-align: center !important;
+  text-align: center;
 }
 
+.allTweetMain {
+  width: 100%;
+}
 .allTweet{
-border: 1px;
-color: grey;
+
 text-align: center;
+padding: 2%;
+margin:5% auto;
+}
+.allTweet th, .allTweet td {
+  border: 1px solid grey;
+  padding: 5px;
 
 }
 

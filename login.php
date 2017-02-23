@@ -1,6 +1,6 @@
 <?php
-
 require_once 'src/config.php';
+require_once 'src/User.php';
 
 session_start();
 
@@ -9,20 +9,29 @@ session_start();
 
     if (!empty($_POST['password']))
     {
-      $dbPass = $row['hashed_password'];
+      //qwerty -> dasdhasjhfjdsgkjgfhe3i2u13412
+      $user = new User();
+      $pass = $user->setPassword($_POST['password']);
 
-      if(password_verify($password, $dbPass))
+      $query="SELECT COUNT(*) as ilosc,id FROM Users WHERE email='".$_POST['email']."' AND hashed_password='$pass'";
+      $result = $connection->query($query);
+      $row = $result->fetch_assoc();
+
+      // var_dump($_POST);
+      // var_dump($pass);
+      if($row['ilosc'] == 1 )
       {
-        $_SESSION['zalogowano'] = true;
-        $_SESSION['id'] = $row['id'];
-        $_SESSION['username'] = $row['username'];
-
-        $sql  = "SELECT * FROM Users ";
-        $sql .= "WHERE email = '{$email}' ";
-        $sql .= "LIMIT 1";
-
+        session_regenerate_id();
+        //$_SESSION['userIP'] = $_SERVER['REMOTE_IP'];
+        $_SESSION['userID'] = $row['id'];
         echo "Trwa przekierowanie na strone główna";
         header( "refresh:3;url=glowna.php" );
+      }
+      else
+      {
+        echo "NIET";
+
+      }
         //
         //
         // $sql = "SELECT password,salt FROM Users WHERE email=?";
@@ -30,13 +39,6 @@ session_start();
         // $stmt->execute(array($_POST['email']));
         // $row = $stmt->fetch();
         // $ps=hash("sha256",$_POST['password'].$row['salt']);
-       }
-        else
-        {
-          echo "Podano błędne dane";
-          header( "refresh:3;url=loginhtml.php" );
-        }
-
     }
     else
     {

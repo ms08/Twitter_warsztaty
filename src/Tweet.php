@@ -17,7 +17,6 @@ Class Tweet
     $this->creationDate = "";
   }
 
-
     public function getId()
     {
         return $this->id;
@@ -52,9 +51,9 @@ Class Tweet
         return $this->creationDate;
     }
 
-    public function setCreationDate($creationDate)
+    public function setCreationDate()
     {
-        $this->creationDate = $creationDate  = date('Y-m-d H:i:s');
+        $this->creationDate = date('Y-m-d H:i:s');
 
         return $this;
     }
@@ -75,12 +74,10 @@ Class Tweet
       return $loadTweetById;
       }
       return null;
-
-
     }
     static public function loadAllTweetsByUserId(mysqli $connection, $userId)
     {
-      $sql = "SELECT * FROM Tweet WHERE user_id=$userId";
+      $sql = "SELECT id,text,creation_date FROM Tweet WHERE user_id=$userId";
       $ret = [];
       $result = $connection->query($sql);
       if($result == true && $result->num_rows != 0)
@@ -89,6 +86,7 @@ Class Tweet
         {
           $loadAllTweets = new Tweet();
           $loadAllTweets->id = $row['id'];
+          $loadAllTweets->userId = $userId;
           $loadAllTweets->text = $row['text'];
           $loadAllTweets->creationDate = $row['creation_date'];
 
@@ -138,9 +136,9 @@ Class Tweet
     }
   }
 
-  // $oTweet = new Tweet();
-  // $oTweet->setuserId(1);
-  // $oTweet->setCreationDate();
+  $oTweet = new Tweet();
+  $oTweet->setuserId(1);
+  $oTweet->setCreationDate();
   // $oTweet->setText('xxxxxx Miroslawy polskiego bizn...');
   // $oTweet->saveToDB($connection);
 

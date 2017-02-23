@@ -49,7 +49,7 @@ Class User
 	}
 
 	public function setPassword($newPassword) {
-		$newHashedPassword = password_hash($newPassword, PASSWORD_BCRYPT);
+		$newHashedPassword = hash('sha256',$newPassword);
 		return $this->hashedPassword = $newHashedPassword;
 	}
 

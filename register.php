@@ -16,7 +16,7 @@ if($_SERVER['REQUEST_METHOD']=='POST')
         $user = new User();
         $user->setUsername(trim($_POST['username']));
         $user->setEmail(trim($_POST['email']));
-        $user->setPassword(trim($_POST['password']));
+        $user->setPassword($_POST['password']);
         $user->saveToDB($connection);
 
         echo "Zarejestrowano!!";

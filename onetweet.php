@@ -1,10 +1,27 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="JS/main.css" type="text/css">
+  <link href="JS/bootstrap.min.css" rel="stylesheet" type="text/css">
+
+
+  <title>Tweet</title>
+</head>
+<body>
 <?php
 
 require 'src/config.php';
 require 'src/Tweet.php';
 require 'src/User.php';
 
-$tweet = Tweet::loadTweetById($connection, 1);
+$tweet = Tweet::loadTweetById($connection,$_GET['id']);
+//TODO filtrowac $_GET
+//
+echo("<table class='allTweet'>");
 
 $id = $tweet->getUserId();
       $sql = "SELECT * FROM users WHERE id=$id";
@@ -12,10 +29,12 @@ $id = $tweet->getUserId();
       $row = $result->fetch_assoc();
       echo '
                 <tr>
-                <tr>Imie: '.$row['username'].' || <br></tr>
-                <tr>Email: '.$row['email'].' || <br></tr>
-                <tr>Data utworzenia: '.$tweet->getCreationDate().'<br></tr>
-                <tr>'.$tweet->getText().
-                '</tr>';
+                <td>Imie: '.$row['username'].'</td>
+                <td>Email: '.$row['email'].'</td>
+                <td>'.$tweet->getText().'</td>
+                <td>Data utworzenia: '.$tweet->getCreationDate().'<br></td>
+                </tr>';
 
+echo('</table');
  ?>
+</body>

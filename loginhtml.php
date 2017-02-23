@@ -1,15 +1,3 @@
-<?php
-
-session_start();
-
-if(isset($_SESSION['zalogowany'])&&($_SESSION['zalogowany']==true))
-{
-  header('Location:glowna.php');
-  exit();
-}
-
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -29,7 +17,7 @@ if(isset($_SESSION['zalogowany'])&&($_SESSION['zalogowany']==true))
 
   <div class="input-group">
     <span class="input-group-addon" id="basic-addon1"></span>
-    <input type="text" class="form-control" placeholder="Username" aria-describedby="basic-addon1" name="email">
+    <input type="text" class="form-control" placeholder="Email" aria-describedby="basic-addon1" name="email">
   </div>
 
   <div class="input-group">

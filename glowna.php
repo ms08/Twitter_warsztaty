@@ -11,9 +11,9 @@ require_once 'src/Tweet.php';
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-<link rel="stylesheet" href="JS/main.css" type="text/css">
-<link href="JS/bootstrap.min.css" rel="stylesheet" type="text/css">
 
+<link href="JS/bootstrap.min.css" rel="stylesheet" type="text/css">
+<link rel="stylesheet" href="JS/main.css" type="text/css">
 
   <title>Tweet</title>
 </head>
@@ -65,7 +65,7 @@ Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor 
 
 <div class="center">
 
-<table class="allTweet" border="1px">
+<table class="allTweet allTweetMain">
 
 
 
