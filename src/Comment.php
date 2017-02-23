@@ -157,6 +157,6 @@ Class Comment
 //
 // var_dump($oComment);
 
-$usertest = Comment::loadCommentsById($connection,2);
-
-var_dump($usertest);
+// $usertest = Comment::loadCommentsById($connection,2);
+//
+// var_dump($usertest);

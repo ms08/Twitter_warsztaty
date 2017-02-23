@@ -19,19 +19,13 @@ require_once 'src/Tweet.php';
 </head>
 <body class="body">
 
-
-
-
 <blockquote class="blockquote-reverse">
 Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis
 Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis
 </blockquote>
 
-
-
-
 <div class="textarea">
-<form action="addTweet.php" method="post">
+<form action="addTweet.php" method="POST">
 <textarea placeholder="Napisz coś..." rows="20" name="tweet"></textarea>
 
 </div>
@@ -42,17 +36,42 @@ Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor 
 
 <div class="center">
 
-
+<table class="allTweet" border="1px">
 
 <?php
 
-$usertest = Tweet::loadAllTweets($connection);
-var_dump($usertest);
+ $tweetTest = Tweet::loadAllTweets($connection);
+ $revTweets = array_reverse($tweetTest);
 
+  echo "<th>Tweet</th>";
+  echo "<th>Kto</th>";
+  echo "<th>Email</th>";
+  echo "<th>Data</th>";
+
+          foreach ($revTweets as $value)
+          {
+
+            $value->getUserId();
+            $id = $value->getUserId();
+            $sql = "SELECT email, username FROM Users WHERE id=$id LIMIT 1";
+
+            $result = $connection->query($sql);
+            $row=$result->fetch_assoc();
+
+            echo "<tr>";
+            echo "<td>".$value->getText()."</td>";
+            echo "<td>".$row['username']."</td>";
+            echo "<td>".$row['email']."</td>";
+            echo "<td>".$value->getCreationDate()."</td>";
+            echo "</tr>";
+
+          }
 
 ?>
+</table>
 
 </div>
+
 <script src="JS/jquery-3.1.1.min.js" type="text/javascript">  </script>
 <script src="JS/jquery.js" type="text/javascript">  </script>
 <script src="JS/bootstrap.min.js" type="text/javascript">  </script>

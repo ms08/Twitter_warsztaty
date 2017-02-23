@@ -4,18 +4,6 @@ require_once 'src/config.php';
 
 session_start();
 
-
-  //rejestrujmey
-  //haslo : qwerty
-  //salt: dashdhasjnbjcxsad
-  //hashHASLO: dasghdasdsadmashjngfcnasd
-
-  //Login
-  //email:
-  //haslo: qwerty
-  //salt : z bazy
-  //hashHASLO = hash(sol z bazy+qwerty)
-
   if(!empty($_POST['email']))
   {
 

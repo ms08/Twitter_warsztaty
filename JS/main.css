@@ -1,3 +1,9 @@
+.allTweet{
+border: 1px;
+color: blue;
+
+}
+
 .logowanie{
 background-image: url("../js/img/1.jpg");
 background-size: cover;
@@ -22,7 +28,7 @@ background-color: rgba(0, 0, 107, 0.4);
 
 .body{
 width:  80%;
-margin: 0 auto;
+margin: auto;
 }
 
 .komunikaty{

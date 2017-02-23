@@ -112,6 +112,7 @@ Class Tweet
         {
           $loadAllTweets = new Tweet();
           $loadAllTweets->id = $row['id'];
+          $loadAllTweets->userId = $row['user_id'];
           $loadAllTweets->text = $row['text'];
           $loadAllTweets->creationDate = $row['creation_date'];
 
@@ -138,9 +139,9 @@ Class Tweet
   }
 
   // $oTweet = new Tweet();
-  // $oTweet->setuserId(2);
-  // $oTweet->setCreationDate(2017-02-21);
-  // $oTweet->setText('Miroslawy polskiego bizn...');
+  // $oTweet->setuserId(1);
+  // $oTweet->setCreationDate();
+  // $oTweet->setText('xxxxxx Miroslawy polskiego bizn...');
   // $oTweet->saveToDB($connection);
 
 // $usertest = Tweet::loadAllTweetsByUserId($connection,2);
