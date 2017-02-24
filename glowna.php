@@ -86,8 +86,6 @@ Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor 
 
           foreach ($revTweets as $value)
           {
-
-            $value->getUserId();
             $id = $value->getUserId();
             $sql = "SELECT email, username FROM Users WHERE id=$id";
 
@@ -99,8 +97,9 @@ Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor 
             echo "<td>".$row['username']."</td>";
             echo "<td>".$row['email']."</td>";
             echo "<td>".$value->getCreationDate()."</td>";
-            echo "<td><a href='onetweet'>Zobacz</a></td>";
+            echo "<td><a href='onetweet.php?id=$id'>Zobacz</a></td>";
             echo "</tr>";
+
 
           }
 

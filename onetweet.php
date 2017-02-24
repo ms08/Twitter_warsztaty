@@ -22,8 +22,9 @@ $tweet = Tweet::loadTweetById($connection,$_GET['id']);
 
 echo("<table class='allTweet'>");
 
-$id = $tweet->getUserId();
-      $sql = "SELECT * FROM users WHERE id=$id";
+// $id = $tweet->getUserId();
+      $id=$_GET['id'];
+      $sql = "SELECT * FROM Users WHERE id=$id";
       $result = $connection->query($sql);
       $row = $result->fetch_assoc();
       echo '
