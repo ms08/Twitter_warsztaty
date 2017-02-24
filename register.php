@@ -19,7 +19,7 @@ if($_SERVER['REQUEST_METHOD']=='POST')
 
         if(mysqli_num_rows($query) > 0)
         {
-          echo "email already exists";
+          echo "Taki email istnieje już w bazie!";
           header( "refresh:2;url=registerhtml.php" );
         }
         else
