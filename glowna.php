@@ -37,8 +37,8 @@ require_once 'src/Tweet.php';
         <ul class="nav navbar-nav">
           <li class="active"><a href="#">Wiadomości<span class="sr-only">(current)</span></a></li>
           <li><a href="#">Tetsy</a></li>
-          <li><a href="#">Tetsy</a></li>
-          <li><a href="#">Tetsy</a></li>
+          <li><a href="updateuser.php">Zaktualizuj dane</a></li>
+          <li><a href="userglowna.php">Moje Tweety</a></li>
         </ul>
         <ul class="nav navbar-nav navbar-right">
           <li><a href="logout.php">Wyloguj</a></li>

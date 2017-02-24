@@ -1,5 +1,6 @@
 <?php
 
+session_start();
 
 require_once 'src/config.php';
 require_once 'src/Tweet.php';
@@ -8,7 +9,7 @@ if(!empty($_POST['tweet']))
 {
 
   $oTweet = new Tweet();
-  $oTweet->setuserId(2);
+  $oTweet->setuserId($_SESSION['userID']);
   $oTweet->setCreationDate();
   $oTweet->setText($_POST['tweet']);
   $oTweet->saveToDB($connection);

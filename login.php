@@ -9,7 +9,6 @@ session_start();
 
     if (!empty($_POST['password']))
     {
-      //qwerty -> dasdhasjhfjdsgkjgfhe3i2u13412
       $user = new User();
       $pass = $user->setPassword($_POST['password']);
 
@@ -17,11 +16,11 @@ session_start();
       $result = $connection->query($query);
       $row = $result->fetch_assoc();
 
-      // var_dump($_POST);
-      // var_dump($pass);
+      var_dump($row);
+      var_dump($result);
       if($row['ilosc'] == 1 )
       {
-        session_regenerate_id();
+        // session_regenerate_id();
         //$_SESSION['userIP'] = $_SERVER['REMOTE_IP'];
         $_SESSION['userID'] = $row['id'];
         echo "Trwa przekierowanie na strone główna";

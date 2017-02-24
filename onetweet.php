@@ -19,8 +19,7 @@ require 'src/Tweet.php';
 require 'src/User.php';
 
 $tweet = Tweet::loadTweetById($connection,$_GET['id']);
-//TODO filtrowac $_GET
-//
+
 echo("<table class='allTweet'>");
 
 $id = $tweet->getUserId();
