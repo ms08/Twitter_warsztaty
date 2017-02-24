@@ -29,7 +29,10 @@ require_once 'src/Tweet.php';
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" href="#">Witaj użytkowniku:</a>
+        <a class="navbar-brand" href="#">Witaj :
+          <?php
+          session_start();
+          echo $_SESSION['username']; ?> </a>
       </div>
 
       <!-- Collect the nav links, forms, and other content for toggling -->
@@ -79,13 +82,14 @@ Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor 
   echo "<th>Kto</th>";
   echo "<th>Email</th>";
   echo "<th>Data</th>";
+  echo "<th>Zobacz</th>";
 
           foreach ($revTweets as $value)
           {
 
             $value->getUserId();
             $id = $value->getUserId();
-            $sql = "SELECT email, username FROM Users WHERE id=$id LIMIT 1";
+            $sql = "SELECT email, username FROM Users WHERE id=$id";
 
             $result = $connection->query($sql);
             $row=$result->fetch_assoc();
@@ -95,6 +99,7 @@ Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor 
             echo "<td>".$row['username']."</td>";
             echo "<td>".$row['email']."</td>";
             echo "<td>".$value->getCreationDate()."</td>";
+            echo "<td><a href='onetweet'>Zobacz</a></td>";
             echo "</tr>";
 
           }
