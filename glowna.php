@@ -97,8 +97,24 @@ Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor 
             echo "<td>".$row['username']."</td>";
             echo "<td>".$row['email']."</td>";
             echo "<td>".$value->getCreationDate()."</td>";
-            echo "<td><a href='onetweet.php?id=$id'>Zobacz</a></td>";
+            echo "<td><a href='onetweet.php?id=".$value->getId()."'>Zobacz</a></td>";
             echo "</tr>";
+
+            echo "<tr>";
+            echo "<td colspan='4'>";
+            echo "<form method='POST' action='addcomment.php'><textarea name='komentarz'></textarea><input type='hidden' name='tweetID' value='".$value->getId()."'/>";
+            echo "</td><td><input type='submit' value='Dodaj'></td></form>";
+            echo "</tr>";
+
+
+
+
+            $oComment = Comment::loadAllCommentsByPostId($connection, $value->getId());
+
+            foreach($oComment as $value)
+            {
+              <tr><td colspan=5></td></tr>
+            }
 
 
           }

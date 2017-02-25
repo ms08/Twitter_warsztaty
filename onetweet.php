@@ -24,7 +24,7 @@ echo("<table class='allTweet'>");
 
 // $id = $tweet->getUserId();
       $id=$_GET['id'];
-      $sql = "SELECT * FROM Users WHERE id=$id";
+      $sql = "SELECT * FROM Users WHERE id=(SELECT user_id from Tweet WHERE id =$id)";
       $result = $connection->query($sql);
       $row = $result->fetch_assoc();
       echo '

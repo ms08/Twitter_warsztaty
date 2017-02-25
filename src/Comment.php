@@ -65,9 +65,9 @@ Class Comment
           return $this->creationDate;
       }
 
-      public function setCreationDate($creationDate)
+      public function setCreationDate()
       {
-          $this->creationDate = $creationDate  = date('Y-m-d H:i:s');
+          $this->creationDate =date('Y-m-d H:i:s');
 
           return $this;
       }
