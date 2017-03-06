@@ -76,7 +76,7 @@ Class Comment
 
     static public function loadCommentsById(mysqli $connection, $id)
     {
-      $sql = "SELECT * FROM comment WHERE id=$id LIMIT 1";
+      $sql = "SELECT * FROM comment WHERE id=$id";
       $result = $connection->query($sql);
       if($result == true && $result->num_rows == 1)
       {

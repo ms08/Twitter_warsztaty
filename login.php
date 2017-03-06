@@ -30,6 +30,7 @@ session_start();
       else
       {
         echo "NIET";
+        header( "refresh:2;url=loginhtml.php" );
 
       }
         //
