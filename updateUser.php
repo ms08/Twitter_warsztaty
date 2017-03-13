@@ -17,8 +17,9 @@ else
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  
   <link href="JS/bootstrap.min.css" rel="stylesheet" type="text/css">
-  <link rel="stylesheet" href="JS/main.css" type="text/css">
+<link rel="stylesheet" href="JS/main.css" type="text/css">
   
   <title>Document</title>
 </head>
@@ -30,20 +31,21 @@ else
         <input type="text" placeholder="email" name="email"><br>
         <input type="text" placeholder="stare hasło" name="oldPassword"><br>
         <input type="text" placeholder="hasło" name="password"><br>
-        <button type="submit">zmień dane</button>
+        <button class="guzik" type="submit">zmień dane</button>
     </form>
     
     
     <form method="post" action="glowna.php">
         <button type="submit">Powrót na stronę główna</button>
     </form>
+    
+       <form method="post" action="delete.php">
+        <button type="submit">Usuń się!!</button>
+    </form>
 
  
     
-    <script src="JS/jquery-3.1.1.min.js" type="text/javascript"></script>
-    <script src="JS/jquery.js" type="text/javascript"></script>
-    <script src="JS/bootstrap.min.js" type="text/javascript"></script>
-    <script src="JS/app.js" type="text/javascript"></script>
+   
   
 </body>
 </html>
@@ -61,11 +63,15 @@ else
         $logged->setUsername($_POST['username']); 
         $logged->saveToDB($connection);
         echo 'Dane zmienione!';
+//        session_destroy();
+//        header("location:session.php");
+
       }  
       else
       {
           echo 'Podaj poprawne hasło';
       }
+      
   }
 
 

@@ -1,0 +1,142 @@
+<?php
+
+require_once ('config.php');
+
+Class Messages
+{
+  private $id;
+  private $userId;
+  private $idMessage;
+  private $creationDate;
+  private $text;
+
+  public function __construct()
+  {
+    $this->id = -1;
+    $this->userId = "";
+    $this->idMessage="";
+    $this->creationDate = "";
+    $this->text = "";
+  }
+
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    public function getUserId()
+    {
+        return $this->userId;
+    }
+
+    public function setUserId($userId)
+    {
+        $this->userId = $userId;
+ 
+        return $this;
+    }
+
+    public function getIdMessage()
+    {
+        return $this->idMessage;
+    }
+
+    public function setIdMessage($idMessage)
+    {
+        $this->idMessage = $idMessage;
+ 
+        return $this;
+    }
+
+    public function getCreationDate()
+    {
+        return $this->creationDate;
+    }
+
+    public function setCreationDate()
+    {
+        $this->creationDate =date('Y-m-d H:i:s');
+
+        return $this;
+    }
+
+    public function getText()
+    {
+        return $this->text;
+    }
+
+    public function setText($text)
+    {
+        $this->text = $text;
+ 
+        return $this;
+    }
+ 
+public function saveToDB(mysqli $connection) 
+        {
+		if($this->id == -1)
+            {
+	     $sql = "INSERT INTO Messages(user_id, id_message, creation_date, text)
+             VALUES ('$this->userId', '$this->idMessage', '$this->creationDate','$this->text')";
+             $result = $connection->query($sql);
+             $this->id = $connection->insert_id;
+             return true;
+            }
+        }
+        
+ static public function loadMessagesByUserId(mysqli $connection, $userId)
+  {
+      $sql = "SELECT * FROM Messages WHERE user_id=$userId";
+      $ret = [];
+      $result = $connection->query($sql);
+      if($result == true && $result->num_rows != 0)
+      {
+           foreach ($result as $row)
+      {
+      
+        $loadedMessage = new Messages();
+        $loadedMessage->userId = $row['user_id'];
+        $loadedMessage->idMessage = $row['id_message']; 
+        $loadedMessage->creationDate = $row['creation_date'];
+        $loadedMessage->text = $row['text'];
+
+        $ret[]= $loadedMessage;
+       
+      }
+      }
+      return $ret;
+
+  }
+       
+// static public function loadAllMessages(mysqli $connection)
+//  {
+//    $sql = "SELECT * FROM Users";
+//    $ret = [];
+//    $result = $connection ->query ($sql);
+//    if($result == true && $result->num_rows != 0)
+//    {
+//      foreach ($result as $row)
+//      {
+//        $loadedUser = new User();
+//        $loadedUser->id = $row['id'];
+//        $loadedUser->UserName = $row['username'];
+//        $loadedUser->hashedPassword = $row['hashed_password']; $loadedUser->email = $row['email'];
+//
+//        $ret[] = $loadedUser;
+//      }
+//    }
+//    return $ret;
+//  }       
+        
+        
+}
+
+// $Messages1 = new Messages();
+// $Messages1->setUserId(3);
+// $Messages1->setIdMessage(4);
+// $Messages1->setCreationDate();
+// $Messages1->setText('ojfjfsodjofjodi');
+// $Messages1->saveToDB($connection);
+// var_dump($Messages1);
+ $usertest = Messages::loadMessagesByUserId($connection, 2);
+ var_dump($usertest);
