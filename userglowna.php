@@ -6,11 +6,12 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <link rel="stylesheet" href="JS/main.css" type="text/css">
   <link href="JS/bootstrap.min.css" rel="stylesheet" type="text/css">
-
+  
 
   <title>Tweet</title>
 </head>
 <body>
+
 
 <?php
 session_start();
@@ -37,4 +38,9 @@ foreach ($tweetTest as $value)
 echo "</table>";
 
  ?>
+        <div class="guzik">
+      <form method="post" action="glowna.php">
+        <button type="submit">Powrót na stronę główna</button>
+    </form>
+    </div>
 </body>

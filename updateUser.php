@@ -17,10 +17,13 @@ else
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link href="JS/bootstrap.min.css" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="JS/main.css" type="text/css">
+  
   <title>Document</title>
 </head>
 <body>
-   
+  
     
     <form method="POST" >
         <input type="text" placeholder="Nazwa użytkownia" name="username"><br>
@@ -35,6 +38,13 @@ else
         <button type="submit">Powrót na stronę główna</button>
     </form>
 
+ 
+    
+    <script src="JS/jquery-3.1.1.min.js" type="text/javascript"></script>
+    <script src="JS/jquery.js" type="text/javascript"></script>
+    <script src="JS/bootstrap.min.js" type="text/javascript"></script>
+    <script src="JS/app.js" type="text/javascript"></script>
+  
 </body>
 </html>
 <?php
