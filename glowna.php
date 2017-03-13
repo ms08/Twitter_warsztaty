@@ -76,6 +76,7 @@ require_once 'src/Comment.php';
             <?php
             $tweetTest = Tweet::loadAllTweets($connection);
             $revTweets = array_reverse($tweetTest);
+            
 
             echo "<th styles:text-align='center'>Tweet</th>";
             echo "<th>Kto</th>";
@@ -107,16 +108,15 @@ require_once 'src/Comment.php';
                     echo "</td><td><input type='submit' value='Dodaj'></td></form>";
                     echo "</tr>";
 
+                
 
-
-                $oComment = Comment::loadAllCommentsByPostId($connection, $value->getId());
-
-            }
-                foreach ($oComment as $valut) {
-                    echo "<tr><td colspan=5></td></tr>";
-                    echo "<tr><td>" .$valut->getText()."</td></tr>";
+//            $oComment = Comment::loadAllCommentsByPostId($connection, $value->getId());
+//            
+//                foreach ($oComment as $valut) {
+//                    echo "<tr><td colspan=5>".$valut->getText()."</td></tr>";
+//                    echo "<tr><td>" .$valut->getText()."</td></tr>";
+//                }
                 }
-           
             ?>
         </table>
 
