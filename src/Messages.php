@@ -6,7 +6,7 @@ Class Messages
 {
   private $id;
   private $userId;
-  private $idMessage;
+  private $messageFrom;
   private $creationDate;
   private $text;
 
@@ -14,7 +14,7 @@ Class Messages
   {
     $this->id = -1;
     $this->userId = "";
-    $this->idMessage="";
+    $this->messageFrom="";
     $this->creationDate = "";
     $this->text = "";
   }
@@ -36,14 +36,14 @@ Class Messages
         return $this;
     }
 
-    public function getIdMessage()
+    public function getMessageFrom()
     {
-        return $this->idMessage;
+        return $this->messageFrom;
     }
 
-    public function setIdMessage($idMessage)
+    public function setMessageFrom($idMessage)
     {
-        $this->idMessage = $idMessage;
+        $this->messageFrom = $idMessage;
  
         return $this;
     }
@@ -76,8 +76,8 @@ public function saveToDB(mysqli $connection)
         {
 		if($this->id == -1)
             {
-	     $sql = "INSERT INTO Messages(user_id, id_message, creation_date, text)
-             VALUES ('$this->userId', '$this->idMessage', '$this->creationDate','$this->text')";
+	     $sql = "INSERT INTO Messages(user_id, message_from, creation_date, text)
+             VALUES ('$this->userId', '$this->messageFrom', '$this->creationDate','$this->text')";
              $result = $connection->query($sql);
              $this->id = $connection->insert_id;
              return true;
@@ -96,7 +96,7 @@ public function saveToDB(mysqli $connection)
       
         $loadedMessage = new Messages();
         $loadedMessage->userId = $row['user_id'];
-        $loadedMessage->idMessage = $row['id_message']; 
+        $loadedMessage->messageFrom = $row['message_from']; 
         $loadedMessage->creationDate = $row['creation_date'];
         $loadedMessage->text = $row['text'];
 
@@ -138,5 +138,5 @@ public function saveToDB(mysqli $connection)
 // $Messages1->setText('ojfjfsodjofjodi');
 // $Messages1->saveToDB($connection);
 // var_dump($Messages1);
- $usertest = Messages::loadMessagesByUserId($connection, 2);
- var_dump($usertest);
+// $usertest = Messages::loadMessagesByUserId($connection, 2);
+// var_dump($usertest);
