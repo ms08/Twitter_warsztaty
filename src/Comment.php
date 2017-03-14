@@ -105,10 +105,8 @@ Class Comment
         {
           $loadCommentById = new Comment();
           $loadCommentById->userId = $row['id_user'];
-          $loadCommentById->text = $row['id_post'];
+          $loadCommentById->text = $row['text'];
           $loadCommentById->creationDate = $row['creation_date'];
-          $loadCommentById->creationDate = $row['text'];
-
 
           $ret[] = $loadCommentById;
         }

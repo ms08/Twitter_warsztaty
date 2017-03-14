@@ -63,6 +63,7 @@ else
         $logged->setUsername($_POST['username']); 
         $logged->saveToDB($connection);
         echo 'Dane zmienione!';
+        $_SESSION['username'] = $_POST['username'];
 //        session_destroy();
 //        header("location:session.php");
 

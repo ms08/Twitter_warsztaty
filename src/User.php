@@ -88,7 +88,8 @@ Class User
         $row = $result->fetch_assoc();
         $loadedUser = new User();
         $loadedUser->id = $row['id'];
-        $loadedUser->UserName = $row['username']; $loadedUser->hashedPassword = $row['hashed_password'];
+        $loadedUser->UserName = $row['username']; 
+        $loadedUser->hashedPassword = $row['hashed_password'];
         $loadedUser->email = $row['email'];
 
         return $loadedUser;

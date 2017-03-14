@@ -9,6 +9,8 @@ Class Messages
   private $messageFrom;
   private $creationDate;
   private $text;
+  private $read;
+
 
   public function __construct()
   {
@@ -17,6 +19,8 @@ Class Messages
     $this->messageFrom="";
     $this->creationDate = "";
     $this->text = "";
+    $this->read=0;
+
   }
 
     public function getId()
@@ -35,6 +39,11 @@ Class Messages
  
         return $this;
     }
+    
+    
+    
+    
+    
 
     public function getMessageFrom()
     {
@@ -71,17 +80,35 @@ Class Messages
  
         return $this;
     }
+    
+      public function getRead()
+    {
+        return $this->read;
+    }
+
+    public function setRead($read)
+    {
+        $this->read = $read;
+ 
+        return $this;
+    }
  
 public function saveToDB(mysqli $connection) 
         {
 		if($this->id == -1)
             {
-	     $sql = "INSERT INTO Messages(user_id, message_from, creation_date, text)
-             VALUES ('$this->userId', '$this->messageFrom', '$this->creationDate','$this->text')";
+	     $sql = "INSERT INTO Messages(user_id, message_from, creation_date, text, `read`)
+             VALUES ($this->userId, $this->messageFrom, '$this->creationDate','$this->text', $this->read )";
              $result = $connection->query($sql);
              $this->id = $connection->insert_id;
              return true;
             }
+            else
+            {
+                $sql="UPDATE Messages SET `read`=$this->read WHERE id=$this->id";
+                $result = $connection->query($sql);
+            }
+            
         }
         
  static public function loadMessagesByUserId(mysqli $connection, $userId)
@@ -99,13 +126,39 @@ public function saveToDB(mysqli $connection)
         $loadedMessage->messageFrom = $row['message_from']; 
         $loadedMessage->creationDate = $row['creation_date'];
         $loadedMessage->text = $row['text'];
-
+        $loadedMessage->id = $row['id'];
+        $loadedMessage->read = $row['read'];
         $ret[]= $loadedMessage;
        
       }
       }
       return $ret;
 
+  }
+  
+   static public function loadMessagesById(mysqli $connection, $id)
+  {
+      $sql = "SELECT * FROM Messages WHERE id=$id";
+   
+      $result = $connection->query($sql);
+      if($result == true && $result->num_rows != 0)
+      {
+           foreach ($result as $row)
+      {
+      
+        $loadedMessage = new Messages();
+        $loadedMessage->userId = $row['user_id'];
+        $loadedMessage->messageFrom = $row['message_from']; 
+        $loadedMessage->creationDate = $row['creation_date'];
+        $loadedMessage->text = $row['text'];
+        $loadedMessage->id = $row['id'];
+
+     
+       return $loadedMessage;
+      }
+      
+      }
+      return null;
   }
        
 // static public function loadAllMessages(mysqli $connection)

@@ -42,5 +42,6 @@ echo "</table>";
       <form method="post" action="glowna.php">
         <button type="submit">Powrót na stronę główna</button>
     </form>
+           
     </div>
 </body>

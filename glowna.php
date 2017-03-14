@@ -2,6 +2,7 @@
 require_once 'src/config.php';
 require_once 'src/Tweet.php';
 require_once 'src/Comment.php';
+require_once 'src/User.php';
 ?>
 
 <!DOCTYPE html>
@@ -39,7 +40,7 @@ require_once 'src/Comment.php';
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                     <ul class="nav navbar-nav">
                         <li class="active"><a href="messages.php">Wiadomości<span class="sr-only">(current)</span></a></li>
-                        <li><a href="#">Tetsy</a></li>
+                        <li><a href="send.php">Wyslij wiadomość</a></li>
                         <li><a href="updateuser.php">Zaktualizuj dane</a></li>
                         <li><a href="userglowna.php">Moje Tweety</a></li>
                     </ul>
@@ -94,7 +95,8 @@ require_once 'src/Comment.php';
 
                     echo "<tr>";
                     echo "<td>" . $value->getText() . "</td>";
-                    echo "<td>" . $row['username'] . "</td>";
+
+                    echo "<td><a href='oneuser.php?id=" . $value->getUserId() . "'>".$row['username']."</a></td>";
                     echo "<td>" . $row['email'] . "</td>";
                     echo "<td>" . $value->getCreationDate() . "</td>";
                     echo "<td><a href='onetweet.php?id=" . $value->getId() . "'>Zobacz</a></td>";
@@ -110,13 +112,18 @@ require_once 'src/Comment.php';
 
                 
 
-//            $oComment = Comment::loadAllCommentsByPostId($connection, $value->getId());
-//            
-//                foreach ($oComment as $valut) {
-//                    echo "<tr><td colspan=5>".$valut->getText()."</td></tr>";
-//                    echo "<tr><td>" .$valut->getText()."</td></tr>";
-//                }
+                $oComment = Comment::loadAllCommentsByPostId($connection, $value->getId());
+            
+                foreach ($oComment as $valut) {
+                    
+                    $user1 = user::loadUserById($connection, $valut->getUserId());
+                            
+                            
+                   echo "<tr><td colspan=2>".$valut->getText()."</td>";
+                         echo "<td colspan=2>".$valut->getCreationDate()."</td>";
+                          echo "<td colspan=2>" .$user1->getUsername()."</td></tr>";
                 }
+             }
             ?>
         </table>
 
